@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<!-- saved from url=(0119)file:///Users/Erdo/Downloads/Gameplus%20Oyuncu%20Loyalty%20Program%C4%B1%20-%20Pazar%20Aras%CC%A7t%C4%B1rmas%C4%B1.html -->
-<html lang="tr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gameplus Oyuncu Loyalty Programı - Pazar Araştırması</title>
-    <script src="./Gameplus Oyuncu Loyalty Programı - Pazar Araştırması_files/chart.js"></script>
-    <script src="./Gameplus Oyuncu Loyalty Programı - Pazar Araştırması_files/chartjs-plugin-datalabels@2.0.0"></script>
+    <!-- 
+        İSTEK: Uyumlu CDN linkleri eklenmesi (Kütüphaneler tarayıcıya yüklenmeli)
+        DURUM: Chart.js ve datalabels eklentisi için CDN linkleri aşağıda <head> içerisinde doğru şekilde eklenmiştir.
+        ÖNERİ: Bu script etiketlerinin <head> içerisinde veya en azından ana JavaScript kodunuzdan önce olması önemlidir.
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 
@@ -87,12 +92,10 @@
         .nav-group { margin-bottom: calc(2px * 0.9 * 1.1); }
 
         .nav-title {
-            /* Original padding: calc(4px * 1.1 * 1.1) calc(12px * 1.1 * 1.1); */
-            /* Original font-size: calc(11px * 1.25 * 1.1 * 1.1 * 1.25); */
-            padding: calc(4px * 1.1 * 0.95) calc(12px * 1.1 * 0.95); /* Approx. 13.6% reduction in padding */
-            font-size: calc(11px * 1.25 * 1.1 * 1.1 * 1.1); /* Approx. 12.5% reduction in font-size */
+            padding: calc(4px * 1.1 * 0.95) calc(12px * 1.1 * 0.95); 
+            font-size: calc(11px * 1.25 * 1.1 * 1.1 * 1.1); 
             text-transform: uppercase;
-            letter-spacing: 1.1px; /* Slightly reduced letter-spacing */
+            letter-spacing: 1.1px; 
             color: var(--light-muted);
             font-weight: 600;
         }
@@ -100,15 +103,13 @@
         .nav-item {
             display: flex;
             align-items: center;
-            /* Original padding: calc(7px * 1.1 * 1.1) calc(12px * 1.1 * 1.1); */
-            /* Original font-size: calc(0.8rem * 1.25 * 1.1 * 1.25); */
-            padding: calc(7px * 1.1 * 0.95) calc(12px * 1.1 * 0.95); /* Approx. 13.6% reduction in padding */
+            padding: calc(7px * 1.1 * 0.95) calc(12px * 1.1 * 0.95); 
             color: var(--light);
             text-decoration: none;
             transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
             position: relative;
             cursor: pointer;
-            font-size: calc(0.8rem * 1.25 * 1.1 * 1.1); /* Approx. 12% reduction in font-size */
+            font-size: calc(0.8rem * 1.25 * 1.1 * 1.1); 
             outline: none;
         }
 
@@ -129,38 +130,31 @@
             background-color: rgba(var(--primary-rgb), 0.25) !important;
             color: var(--primary) !important;
             border-left: 3px solid var(--primary);
-            /* Adjusted padding-left for nav-active to align with new nav-item padding */
             padding-left: calc( (7px * 1.1 * 0.95) - 3px + (12px * 1.1 * 0.95 - 7px * 1.1 * 0.95) );
         }
         .nav-active .nav-icon, .nav-active .nav-label { color: var(--primary); font-weight: 600; }
 
         .nav-icon {
-            /* Original width/height: calc(18px * 1.25 * 1.1 * 1.1); */
-            /* Original margin-right: calc(5px * 1.1 * 1.1); */
-            /* Original font-size: calc(0.95em * 1.25 * 1.1 * 1.1); */
-            width: calc(18px * 1.25 * 1.1 * 0.95); /* Approx. 14% reduction */
-            height: calc(18px * 1.25 * 1.1 * 0.95); /* Approx. 14% reduction */
+            width: calc(18px * 1.25 * 1.1 * 0.95); 
+            height: calc(18px * 1.25 * 1.1 * 0.95); 
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: calc(5px * 1.1 * 0.95); /* Approx. 13.6% reduction */
+            margin-right: calc(5px * 1.1 * 0.95); 
             color: var(--light-muted);
             transition: color 0.2s ease;
-            font-size: calc(0.95em * 1.25 * 1.1 * 1.1); /* Kept relative em size, will scale with nav-item font-size */
+            font-size: calc(0.95em * 1.25 * 1.1 * 1.1); 
         }
         .nav-item:hover .nav-icon,
         .nav-item:focus-visible .nav-icon { color: var(--primary); }
 
         .nav-badge {
             margin-left: auto;
-            /* Original font-size: calc(10px * 1.25 * 1.1 * 1.1); */
-            /* Original border-radius: calc(9px * 1.25 * 1.1 * 1.1); */
-            /* Original padding: calc(1.5px * 1.25 * 1.1) calc(6px * 1.25 * 1.1); */
-            font-size: calc(10px * 1.25 * 1.1 * 0.95); /* Approx. 13.6% reduction */
+            font-size: calc(10px * 1.25 * 1.1 * 0.95); 
             background: var(--primary);
             color: var(--dark-sidebar);
-            border-radius: calc(9px * 1.25 * 1.1 * 0.95); /* Approx. 13.6% reduction */
-            padding: calc(1.5px * 1.25 * 0.95) calc(6px * 1.25 * 0.95); /* Approx. 13.6% reduction */
+            border-radius: calc(9px * 1.25 * 1.1 * 0.95); 
+            padding: calc(1.5px * 1.25 * 0.95) calc(6px * 1.25 * 0.95); 
             font-weight: 700;
         }
 
@@ -795,14 +789,13 @@
             .infographic-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
             .section-title { font-size: calc(1.8rem*1.15); }
             .main-content { padding: calc(25px*1.15); }
-            /* Adjusted nav-item and nav-title for smaller screens based on new base sizes */
             .nav-item {
-                padding: calc( (7px * 1.1 * 0.95) * 0.9 ) calc( (12px * 1.1 * 0.95) * 0.9 ); /* Further reduce padding for mobile */
-                font-size: calc( (0.8rem * 1.25 * 1.1 * 1.1) * 0.9 ); /* Further reduce font-size for mobile */
+                padding: calc( (7px * 1.1 * 0.95) * 0.9 ) calc( (12px * 1.1 * 0.95) * 0.9 ); 
+                font-size: calc( (0.8rem * 1.25 * 1.1 * 1.1) * 0.9 ); 
             }
             .nav-title {
                 padding: calc( (4px * 1.1 * 0.95) * 0.9 ) calc( (12px * 1.1 * 0.95) * 0.9 );
-                font-size: calc( (11px * 1.25 * 1.1 * 1.1 * 1.1) * 0.85 ); /* Slightly more reduction for title on mobile */
+                font-size: calc( (11px * 1.25 * 1.1 * 1.1 * 1.1) * 0.85 ); 
             }
         }
 
@@ -816,7 +809,6 @@
             .stat-label { font-size: calc(0.95rem*1.15); }
             .logo h1 { font-size: calc(28px*1.15); }
             .logo p { font-size: calc(0.9rem*1.15); }
-             /* Further adjustments for very small screens */
             .nav-item {
                 padding: calc( (7px * 1.1 * 0.95) * 0.85 ) calc( (12px * 1.1 * 0.95) * 0.85 );
                 font-size: calc( (0.8rem * 1.25 * 1.1 * 1.1) * 0.85 );
@@ -874,9 +866,9 @@
     </style>
 </head>
 <body>
-    <div class="progress-bar" id="progressBar" style="left: 336px; width: 0px;"></div>
+    <div class="progress-bar" id="progressBar"></div>
     <button class="menu-toggle" id="menuToggle" aria-label="Menüyü Aç/Kapat">☰</button>
-    <a href="file:///Users/Erdo/Downloads/online_viewer_net%20(2).html#" class="back-to-top" id="backToTop" aria-label="Başa Dön">↑</a>
+    <a href="#" class="back-to-top" id="backToTop" aria-label="Başa Dön">↑</a>
 
     <div class="sidebar" id="sidebar">
         <div class="logo">
@@ -886,7 +878,7 @@
         <div class="nav-container">
             <div class="nav-group">
                 <div class="nav-title">Genel Bakış</div>
-                <div class="nav-item nav-active" data-section="executive-summary" tabindex="0"> <div class="nav-icon" aria-hidden="true">📊</div>
+                <div class="nav-item" data-section="executive-summary" tabindex="0"> <div class="nav-icon" aria-hidden="true">📊</div>
                     <div class="nav-label">Giriş</div>
                     <div class="nav-badge">1</div>
                 </div>
@@ -939,17 +931,17 @@
                 <div class="nav-title">Program Detayları</div>
                 <div class="nav-item" data-section="loyalty-naming" tabindex="0">
                     <div class="nav-icon" aria-hidden="true">🏷️</div>
-                    <div class="nav-label">İsimlendirme &amp; Konsept</div>
+                    <div class="nav-label">İsimlendirme & Konsept</div>
                     <div class="nav-badge">9</div>
                 </div>
                 <div class="nav-item" data-section="loyalty-mechanics" tabindex="0">
                     <div class="nav-icon" aria-hidden="true">⚙️</div>
-                    <div class="nav-label">Loyalty Mekanikleri &amp; Kurgu</div>
+                    <div class="nav-label">Loyalty Mekanikleri & Kurgu</div>
                     <div class="nav-badge">10</div>
                 </div>
                 <div class="nav-item" data-section="partnership-examples" tabindex="0">
                     <div class="nav-icon" aria-hidden="true">🤝</div>
-                    <div class="nav-label">Partnerlik &amp; İş Birliği Önerileri</div>
+                    <div class="nav-label">Partnerlik & İş Birliği Önerileri</div>
                     <div class="nav-badge">11</div>
                 </div>
             </div>
@@ -1014,7 +1006,7 @@
                 </div>
             </div>
             <div class="chart-container">
-                <canvas id="executiveSummaryChart" width="2604" height="833" style="display: block; box-sizing: border-box; height: 416px; width: 1302px;"></canvas>
+                <canvas id="executiveSummaryChart"></canvas>
             </div>
              <p class="section-reference-link">Referanslar: <a href="https://www.statista.com/topics/11948/video-gaming-in-turkey/" target="_blank" rel="noopener noreferrer">Statista - Video Gaming in Turkey</a>, <a href="https://www.marketsandmarkets.com/Market-Reports/cloud-gaming-market-62740366.html" target="_blank" rel="noopener noreferrer">MarketsandMarkets - Cloud Gaming</a>, <a href="https://www.businessdasher.com/customer-loyalty-statistics/" target="_blank" rel="noopener noreferrer">BusinessDasher - Loyalty Statistics</a></p>
         </section>
@@ -1079,7 +1071,7 @@
                     </div>
                 </div>
                 <div class="chart-container">
-                    <canvas id="loyaltyMarketChart" width="2492" height="833" style="display: block; box-sizing: border-box; height: 416px; width: 1246px;"></canvas>
+                    <canvas id="loyaltyMarketChart"></canvas>
                 </div>
                  <p class="section-reference-link">Referanslar: <a href="https://www.researchandmarkets.com/report/loyalty-card" target="_blank" rel="noopener noreferrer">ResearchAndMarkets - Loyalty Programs</a>, <a href="https://webrazzi.com/2021/04/27/ketchup-turkiye-sadakat-programlari-dijital-platformlar-arastirmasi-ndan-one-cikan-basliklar/" target="_blank" rel="noopener noreferrer">Webrazzi - Ketchup Türkiye Sadakat Araştırması</a></p>
             </div>
@@ -1122,7 +1114,7 @@
                 </div>
             </div>
             <div class="chart-container">
-                <canvas id="kpiMetricsChart" width="2604" height="833" style="display: block; box-sizing: border-box; height: 416px; width: 1302px;"></canvas>
+                <canvas id="kpiMetricsChart"></canvas>
             </div>
              <p class="section-reference-link">Referanslar: <a href="https://investgame.net/wp-content/uploads/2025/03/turkiye-game-market-report-2024.pdf" target="_blank" rel="noopener noreferrer">InvestGame - Türkiye Oyun Raporu</a>, <a href="https://www.blitzllama.com/blog/nps-score-saas" target="_blank" rel="noopener noreferrer">Blitzllama - SaaS NPS</a>, <a href="https://customergauge.com/benchmarks/blog/top-highest-nps-scores" target="_blank" rel="noopener noreferrer">CustomerGauge - Top NPS Scores</a></p>
         </section>
@@ -1198,7 +1190,7 @@
                             <p><em><strong>DAU (Daily Active Users):</strong> Günlük Aktif Kullanıcı sayısı; platformun günlük etkileşim seviyesini ölçer.</em></p>
                         </div>
                         <div class="chart-container" style="height: 280px;">
-                            <canvas id="competitorChart" width="1018" height="427" style="display: block; box-sizing: border-box; height: 213px; width: 509px;"></canvas>
+                            <canvas id="competitorChart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -1230,7 +1222,7 @@
                     <a href="https://news.microsoft.com/2022/01/18/microsoft-to-acquire-activision-blizzard-to-bring-the-joy-and-community-of-gaming-to-everyone-across-every-device/" target="_blank" rel="noopener noreferrer" class="source-link">Kaynak: MS FY22 Earnings Call (s.10)</a>
                 </div>
                 <div class="strategy-card" tabindex="0">
-                    <h4>PlayStation Plus &amp; Stars</h4>
+                    <h4>PlayStation Plus & Stars</h4>
                      <ul>
                         <li>Çok katmanlı üyelik yapısı ve Stars puan sistemi.</li>
                         <li>Görev tamamlama ve satın alımlarla puan kazanımı.</li>
@@ -1274,7 +1266,7 @@
             </div>
 
             <div class="chart-container">
-                <canvas id="globalBenchmarkChart" width="2604" height="833" style="display: block; box-sizing: border-box; height: 416px; width: 1302px;"></canvas>
+                <canvas id="globalBenchmarkChart"></canvas>
             </div>
             <div class="card">
                 <h3>Bulut Oyun Platformlarının Telekom İşbirlikleri</h3>
@@ -1343,7 +1335,7 @@
                     </div>
                 </div>
                 <div class="chart-container">
-                    <canvas id="loyaltyMechanicsImpactChart" width="2492" height="833" style="display: block; box-sizing: border-box; height: 416px; width: 1246px;"></canvas>
+                    <canvas id="loyaltyMechanicsImpactChart"></canvas>
                 </div>
             </div>
         </section>
@@ -1404,7 +1396,7 @@
                 <p>Etkili bir loyalty programı tasarlamak için Gameplus'ın hedefleyebileceği farklı oyuncu tiplerini ve bu segmentlerin davranış modellerini anlamak büyük önem taşır. Pazar araştırmaları ve genel oyuncu davranışları dikkate alındığında, üç ana oyuncu segmenti öne çıkmaktadır:</p>
             </div>
             <div class="chart-container">
-                <canvas id="playerSegmentsChart" width="2604" height="833" style="display: block; box-sizing: border-box; height: 416px; width: 1302px;"></canvas>
+                <canvas id="playerSegmentsChart"></canvas>
             </div>
             <div class="matrix-grid">
                 <div class="matrix-card matrix-hardcore-card" tabindex="0"> <h3 class="matrix-title matrix-hardcore">Hardcore PC Oyuncuları</h3>
@@ -1483,7 +1475,7 @@
                 </div>
             </div>
             <div class="chart-container">
-                <canvas id="rewardPreferenceChart" width="2604" height="833" style="display: block; box-sizing: border-box; height: 416px; width: 1302px;"></canvas>
+                <canvas id="rewardPreferenceChart"></canvas>
             </div>
             <div class="card">
                 <h3>Farklı Oyuncu Segmentlerinin Ödül Tercihleri</h3>
@@ -1541,7 +1533,7 @@
             <div class="card">
                 <p>Gameplus'ın hedef kitlesi olan oyuncular düşünüldüğünde, tasarlanacak loyalty programının ismi hem <strong>oyun kültürüne yakın</strong> hem de <strong>akılda kalıcı ve markanın kimliğini yansıtıcı</strong> olmalıdır. Güçlü ve çekici bir isim, programın kullanıcılar tarafından daha kolay benimsenmesini sağlayacak ve pazarlama iletişimlerinde dönüşüm oranlarını olumlu etkileyecektir.</p>
                 <div class="chart-container">
-                    <canvas id="loyaltyNamingImpactChart" width="2492" height="833" style="display: block; box-sizing: border-box; height: 416px; width: 1246px;"></canvas>
+                    <canvas id="loyaltyNamingImpactChart"></canvas>
                 </div>
                 <div class="data-table-wrapper">
                     <table class="data-table">
@@ -1598,7 +1590,7 @@
                             <li>Seviye atlamak için, platform içi etkileşimlerle (oyun oynama süresi, görev tamamlama vb.) "Deneyim Puanı" (XP) toplanması temel alınabilir.</li>
                         </ul>
                     </li>
-                    <li><strong>Görev ve Başarım Sistemi (Quest &amp; Achievements):</strong>
+                    <li><strong>Görev ve Başarım Sistemi (Quest & Achievements):</strong>
                         <ul>
                             <li><strong>Günlük Görevler:</strong> Kullanıcıların her gün platforma giriş yapmalarını veya kısa süreli belirli aktiviteleri tamamlamalarını teşvik eden basit görevler (örn: "Bugün <span class="highlight-numerical">1 saat</span> oyna", "X oyununu başlat").</li>
                             <li><strong>Haftalık Görevler:</strong> Haftalık bazda tamamlanabilecek, biraz daha kapsamlı görevler (örn: "Bu hafta <span class="highlight-numerical">3 farklı</span> oyunu en az <span class="highlight-numerical">30 dakika</span> oyna", "Bir arkadaşını davet et").</li>
@@ -1622,7 +1614,7 @@
                 </ol>
             </div>
             <div class="chart-container">
-                <canvas id="loyaltyMechanicsImpactChart_Section10" width="2604" height="833" style="display: block; box-sizing: border-box; height: 416px; width: 1302px;"></canvas>
+                <canvas id="loyaltyMechanicsImpactChart_Section10"></canvas>
             </div>
             <div class="carousel">
                 <div class="carousel-content">
@@ -1699,7 +1691,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><strong>Yemek &amp; İçecek Sipariş Platformları</strong></td>
+                            <td><strong>Yemek & İçecek Sipariş Platformları</strong></td>
                             <td>Yemeksepeti, Getir</td>
                             <td>
                                 <ul>
@@ -1714,7 +1706,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><strong>Perakende &amp; Teknoloji Mağazaları</strong></td>
+                            <td><strong>Perakende & Teknoloji Mağazaları</strong></td>
                             <td>Turkcell Pasaj, Hepsiburada, MediaMarkt</td>
                             <td>
                                 <ul>
@@ -1885,14 +1877,17 @@
 
         window.addEventListener('scroll', makeActive);
 
-
+        // İSTEK: Chart.register(ChartDataLabels); satırı eklendi mi?
+        // DURUM: Evet, aşağıdaki window.onload olay dinleyicisi içinde ChartDataLabels eklentisi kontrol edilip kaydedilmektedir.
         window.addEventListener('load', () => {
             updateProgressBar();
             makeActive();
 
+            // Chart.js Datalabels eklentisini global olarak kaydet
+            // Bu kontrol, eklentinin başarılı bir şekilde yüklendiğinden emin olmak için yapılır.
             if (typeof ChartDataLabels !== 'undefined') {
-                Chart.register(ChartDataLabels);
-                Chart.defaults.set('plugins.datalabels', {
+                Chart.register(ChartDataLabels); // Eklentiyi Chart.js'e kaydet
+                Chart.defaults.set('plugins.datalabels', { // Eklenti için varsayılan ayarlar
                     color: '#FFFFFF',
                     anchor: 'end',
                     align: 'end',
@@ -1914,6 +1909,9 @@
                         size: parseFloat(getComputedStyle(document.body).fontSize) * 0.65
                     }
                 });
+            } else {
+                // Eklenti yüklenemezse konsola bir uyarı yazdırılabilir.
+                console.warn('ChartDataLabels plugin could not be loaded or registered.');
             }
 
 
@@ -2046,9 +2044,9 @@
                             },
                             datalabels: {
                                 display: true,
-                                anchor: 'start', // For horizontal bars, 'start' usually means at the beginning of the bar (left)
-                                align: 'end',   // 'end' usually means at the end of the bar (right)
-                                offset: 4,      // Positive offset pushes it further to the right
+                                anchor: 'start', 
+                                align: 'end',   
+                                offset: 4,      
                                 formatter: (value) => '+' + value + '%'
                              }
                         },
@@ -2358,6 +2356,5 @@
             }
         });
     </script>
-
-
-</body></html>
+</body>
+</html>
